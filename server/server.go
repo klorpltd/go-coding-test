@@ -7,6 +7,13 @@ import (
 	"net/http"
 )
 
+func userHandler() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		//TODO: implement me
+		http.Error(w, http.StatusText(http.StatusNotImplemented), http.StatusNotImplemented)
+	}
+}
+
 func Run(ctx context.Context, port int) error {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/user", userHandler())
@@ -28,11 +35,4 @@ func Run(ctx context.Context, port int) error {
 	}(ctx)
 
 	return srv.ListenAndServe()
-}
-
-func userHandler() http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		//TODO: implement me
-		http.Error(w, http.StatusText(http.StatusNotImplemented), http.StatusNotImplemented)
-	}
 }

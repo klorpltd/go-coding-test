@@ -23,3 +23,10 @@ Returns
 1. Every user creation starts an async "data processing" for user
 2. Only 3 users maybe be processing at one time
 3. Service must not terminate while processing user
+```go
+func process(user) error {
+    <-time.After(10*time.Second)
+    log.Printf("processed user [id=%s]\n", user.ID)
+    return nil
+}
+```
